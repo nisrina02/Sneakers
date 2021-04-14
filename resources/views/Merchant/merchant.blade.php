@@ -2,8 +2,6 @@
 
 @section('content')
 
-<br>
-<br>
     <div class="container mt-2">
     <h1>Merchant</h1>
     @if (session('alert_pesan'))

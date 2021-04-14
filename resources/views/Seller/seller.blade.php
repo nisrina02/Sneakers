@@ -2,8 +2,6 @@
 
 @section('content')
 
-<br>
-<br>
     <div class="container mt-2">
 
     <h1>Seller</h1>

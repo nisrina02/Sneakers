@@ -2,8 +2,6 @@
 
 @section('content')
 
-<br>
-<br>
     <div class="container">
     <h1>Admin</h1>
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

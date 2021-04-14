@@ -29,13 +29,18 @@
                 <td>{{ $dt->tgl_transaksi }}</td>
                 <td>{{ $dt->nama_barang}}</td>
                 <td>{{ $dt->qty}}</td>
-                <td>{{ $dt->harga}}</td>
-                <td>{{ $dt->subtotal}}</td>
+                <td>{{ number_format($dt->harga) }}</td>
+                <td>{{ number_format($dt->subtotal) }}</td>
               </tr>
               @endforeach
             </tbody>
         </table>
+        <?php if(Session::get('level')=="customer") {?>
         <a href="{{url('tampil_transaksi')}}" class="btn btn-sm btn-warning">Kembali</a>
+        <?php } ?>
+        <?php if(Session::get('level')<>"customer") {?>
+        <a href="{{url('transaksi')}}" class="btn btn-sm btn-warning">Kembali</a>
+        <?php }?>
     </div>
     <div class="container mt-3">
       {{ $data->links() }}

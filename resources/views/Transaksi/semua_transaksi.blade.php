@@ -4,12 +4,7 @@
 
     <div class="container mt-2">
 
-    <h1>Keranjang</h1>
-          @if (session('alert_message'))
-          <div class="alert alert-success">
-              {{ session('alert_message') }}
-          </div>
-          @endif
+    <h1>Transaksi</h1>
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
@@ -35,14 +30,14 @@
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
                     <a href="{{ url('tampil_detail', $dt->id) }}" class="btn btn-sm btn-primary">Detail</a>
-                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data?')">Delete</button>
+                    <!-- <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data?')">Delete</button> -->
                   </form>
                 </td>
               </tr>
               @endforeach
             </tbody>
         </table>
-        <a href="{{url('barang')}}" class="btn btn-sm btn-success">Kembali</a>
+        <a href="{{url('transaksi')}}" class="btn btn-sm btn-success">Kembali</a>
     </div>
 
 @stop

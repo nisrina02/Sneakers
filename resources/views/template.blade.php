@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>SNEAKERS</title>
         <link rel="icon" href="assets/images/items/1.jpg" type="image/x-icon"/>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -29,18 +29,21 @@
     <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ url('/home') }}">Beranda</a>
                     </li>
-                    <?php if(Session::get('level')=="customer") {?>
+                    <!-- 
                     <li class="nav-item">
                      <a class="nav-link" href="{{ url('/barang') }}">Items</a>
                     </li>
-                    <?php } ?>
+                    -->
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Orders</a>
                     </li> -->
-                    <?php if(Session::get('level')<>"customer") {?>
+                    <?php if(Session::get('level')=="seller") {?>
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ url('/barang_admin') }}">Item</a>
+                          <a class="nav-link" href="{{ url('/barang_admin') }}">Items</a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/transaksi') }}">Transaksi</a>
+                    </li>
                     <?php } ?>
                     <?php if(Session::get('level')=="admin") {?>
                     <li class="nav-item">
@@ -51,6 +54,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/admin') }}">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/transaksi') }}">Transaksi</a>
                     </li>
                   <?php } ?>
     <ul class="navbar-nav">
@@ -69,8 +75,8 @@
   <div class="container">
 <div class="row align-items-center">
   <div class="col-lg-2 col-6">
-    <a href="#" class="brand-wrap">
-      SNEAKERS
+    <a href="{{ url('home') }}" class="brand-wrap">
+     <h4>SNEAKERS</h4> 
     </a> <!-- brand-wrap.// -->
   </div>
   <div class="col-lg-6 col-12 col-sm-12">
@@ -88,12 +94,17 @@
   <div class="col-lg-4 col-sm-6 col-12">
     <div class="widgets-wrap float-md-right">
       <div class="widget-header  mr-3">
-        <a href="{{ url('tampil_transaksi') }}"><img src="{{asset('shop')}}//images/tes.jpg" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
+      
+        <a href="{{ url('checkout') }}"><img src="{{asset('shop')}}//images/tes.jpg" class="icon icon-sm rounded-circle border">
+        <i class="fa fa-shopping-cart"></i><span class="badge badge-danger"></span></a>
       </div>
       <div class="widget-header icontext">
-        <a href="" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
         <div class="text">
+       
+        <a href="{{ url('profil') }}/{{ Session::get('id') }}">
           <span class="text-muted">welcome, {{ Session::get('nama') }}</span>
+          </a>
+     
           <div>
             <a href="{{ url('log out') }}">Logout</a>
             <!-- <a href="{{ url('/register')}}"> Register</a> -->
@@ -177,6 +188,7 @@
 
 </div><!-- container // -->
 </section>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@include('sweet::alert')
     </body>
 </html>

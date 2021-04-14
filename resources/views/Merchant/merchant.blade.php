@@ -42,7 +42,9 @@
               @endforeach
             </tbody>
         </table>
+        <div class="col-12 mt-2">
         <a href="{{url('merchant_create')}}" class="btn btn-sm btn-success">Tambah data merchant</a>
+        </div>
     </div>
     <div class="container mt-3">
       {{ $data->links() }}

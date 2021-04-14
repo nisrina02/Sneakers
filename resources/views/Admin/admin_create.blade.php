@@ -2,8 +2,6 @@
 
 @section('content')
 
-<br>
-<br>
 <div class="container">
 <h1>Tambah Seller Baru</h1>
 		<!-- <div class="wrap-contact100"> -->

@@ -28,10 +28,10 @@
             </li>
           </ul>
         </div>
-        <div class="price mt-2">Rp. {{ $dt->harga }}</div> <!-- price-wrap.// -->
+        <div class="price mt-2">Rp. {{ number_format($dt->harga) }}</div> <!-- price-wrap.// -->
         <div class="price mt-2">
             <a href="{{ url('transaksi', $dt->id) }}" class="btn btn-warning"><i class="fas fa-shopping-cart"></i> Pesan</a>
-            <a href="{{ url('barang', $dt->id) }}" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Detail Product</a>
+            <a href="{{ url('barang_detail', $dt->id) }}" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Detail Product</a>
         </div>
       </div>
       </figcaption>

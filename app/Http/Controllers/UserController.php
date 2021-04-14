@@ -78,9 +78,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $data["user"] = User::where('id', $id)->get();
+        $data = User::where('id', Session::get('id'))->first();
 
-        return view('user', compact('data'));
+        return view('Login.profil', compact('data'));
     }
 
     /**

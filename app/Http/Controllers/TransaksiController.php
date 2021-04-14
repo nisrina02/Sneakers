@@ -8,6 +8,7 @@ use App\Models\Transaksi;
 use App\Models\DetailTransaksi;
 use Session;
 use Carbon\Carbon;
+use Alert;
 use DB;
 
 
@@ -64,45 +65,44 @@ class TransaksiController extends Controller
         $transaksi->total = $transaksi->total+$barang->harga*$request->qty;
         $transaksi->update();
 
-        // alert()->success('Pembelian Berhasil', 'Success');
-        return redirect('tampil_transaksi')->with('alert_message', 'Item berhasil ditambahkan ke keranjang');
+        Alert()->success('Pesanan berhasil masuk ke keranjang', 'Success');
+        return redirect('home');
+        // return redirect('tampil_transaksi')->with('alert_message', 'Item berhasil ditambahkan ke keranjang');
     }
 
-    public function tampil_transaksi()
+    public function checkout()
     {
-        $data = DB::table('transaksi')
-                            ->join('users', 'users.id', '=', 'transaksi.id_user')
-                            ->where('id_user', Session::get('id'))
-                            ->select('transaksi.id', 'transaksi.tgl_transaksi', 'transaksi.total', 'users.nama')
-                            ->get();
-        // $data = Transaksi::where('id_user', Session::get('id'))->first();
-        // $data = Transaksi::where('id', $id)->first();
-        return view('Transaksi.keranjang', compact('data'));
+        $transaksi = Transaksi::where('id_user', Session::get('id'))->first();
+        $detail = DB::table('detail_transaksi')
+                        ->join('transaksi', 'transaksi.id', '=', 'detail_transaksi.id_transaksi')
+                        ->join('barang', 'barang.id', '=', 'detail_transaksi.id_barang')
+                        ->select('detail_transaksi.id', 'barang.nama_barang', 'barang.harga', 'detail_transaksi.subtotal', 'detail_transaksi.qty')
+                        ->where('id_transaksi', $transaksi->id)
+                        ->get();
+
+        return view('Transaksi.checkout', compact('transaksi', 'detail'));
     }
 
-    public function tampil_detail($id)
+
+    public function konfirmasi()
     {
-        $data = DB::table('detail_transaksi')
-                            ->join('transaksi', 'transaksi.id', '=', 'detail_transaksi.id_transaksi')
-                            ->join('barang', 'barang.id', '=', 'detail_transaksi.id_barang')
-                            ->where('id_transaksi', $id)
-                            ->select('transaksi.id', 'transaksi.tgl_transaksi', 'barang.nama_barang', 'barang.harga',
-                                    'detail_transaksi.qty', 'detail_transaksi.subtotal')
-                            ->simplepaginate(4);
-        // $data = Transaksi::where('id', $id)->first();
-        return view('Transaksi.detail_keranjang', compact('data'));
+        $transaksi = Transaksi::where('id_user', Session::get('id'))->first();
+        
+        Alert()->success('Pesanan berhasil di checkout', 'Success');
+        return redirect('home');
     }
 
-    public function delete_transaksi($id)
+    public function delete_checkout($id)
     {
-        $data = Transaksi::where('id', $id)->first();
+        $detail = DetailTransaksi::where('id', $id)->first();
 
-        if($data != null){
-            $data->delete();
+        $transaksi = Transaksi::where('id', $detail->id_transaksi)->first();
+        $transaksi->total = $transaksi->total - $detail->subtotal;
+        $transaksi->update();
 
-            return redirect('tampil_transaksi')->with('alert_message', 'Berhasil menghapus data!');
-        }
-
-        return redirect('tampil_transaksi')->with('alert_message', 'ID tidak ditemukan!');
+        $detail->delete();
+        Alert()->error('Pesanan berhasil dihapus', 'Success');
+        return redirect('checkout');
     }
+
 }

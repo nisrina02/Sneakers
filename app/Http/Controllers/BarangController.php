@@ -120,7 +120,7 @@ class BarangController extends Controller
                       ->where('barang.id', $id)
                       ->get();
 
-      return view('Barang.barang_user', compact('data'));
+      return view('Barang.detail_barang', compact('data'));
     }
 
     /**

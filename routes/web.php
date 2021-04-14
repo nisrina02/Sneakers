@@ -37,6 +37,7 @@ Route::get('home', [DashboardController::class,'index']);
 //Register
 Route::get('form_register', [RegisterController::class,'index']);
 Route::post('register_create', [UserController::class,'store']);
+Route::get('profil/{id}', [UserController::class, 'show']);
 
 //CRUD Seller
 Route::get('seller', [SellerController::class, 'index']);
@@ -50,7 +51,7 @@ Route::delete('seller_destroy/{id}', [SellerController::class, 'destroy']);
 Route::get('barang', [BarangController::class, 'index']);
 Route::get('barang_admin', [BarangController::class, 'admin']);
 Route::get('barang_seller', [BarangController::class, 'seller']);
-Route::get('barang/{id}', [BarangController::class, 'show']);
+Route::get('barang_detail/{id}', [BarangController::class, 'show']);
 Route::get('barang_create', [BarangController::class, 'create']);
 Route::post('barang_store', [BarangController::class, 'store']);
 Route::get('barang_edit/{id}', [BarangController::class, 'edit']);
@@ -75,7 +76,9 @@ Route::delete('merchant_destroy/{id}', [MerchantController::class, 'destroy']);
 
 //CART
 Route::get('transaksi/{id}', [TransaksiController::class, 'index']);
+Route::get('transaksi', [TransaksiController::class, 'tampil_semua_transaksi']);
 Route::post('transaksi_add/{id}', [TransaksiController::class, 'transaksi']);
-Route::get('tampil_transaksi', [TransaksiController::class, 'tampil_transaksi']);
-Route::get('tampil_detail/{id}',[TransaksiController::class, 'tampil_detail']);
-Route::delete('delete_transaksi/{id}', [TransaksiController::class, 'delete_transaksi']);
+Route::get('checkout', [TransaksiController::class, 'checkout']);
+Route::get('konformasi',[TransaksiController::class, 'konfirmasi']);
+Route::delete('delete_checkout/{id}', [TransaksiController::class, 'delete_checkout']);
+

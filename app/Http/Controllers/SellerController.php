@@ -20,9 +20,15 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $data = User::where('level', '=', 'seller')->simplepaginate(4);
+        $cek = Session::get('level');
+        if($cek == 'admin'){
+            $data = User::where('level', '=', 'seller')->simplepaginate(4);
 
-        return view('Seller.seller', compact('data'));
+            return view('Seller.seller', compact('data'));
+        } else {
+            return abort(404);
+        }
+        
     }
 
     /**

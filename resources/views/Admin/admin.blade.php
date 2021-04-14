@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container mt-2">
     <h1>Admin</h1>
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>

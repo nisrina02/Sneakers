@@ -31,7 +31,7 @@
                 <td><img src="/Uploads/{{$dt->foto}}" alt="Foto" width="100px"></td>
                 <td>{{ $dt->jenis}}</td>
                 <td>{{ $dt->deskripsi}}</td>
-                <td>{{ $dt->harga}}</td>
+                <td>{{ number_format($dt->harga) }}</td>
                 <td>{{ $dt->stok}}</td>
                 <td>{{ $dt->nama_toko}}</td>
               </tr>
@@ -39,7 +39,9 @@
             </tbody>
         </table>
         <!-- <a href="{{url('barang_create')}}" class="btn btn-sm btn-success">Tambah data barang</a> -->
+        <div class="col-md-12">
         <a href="{{url('barang')}}" class="btn btn-sm btn-warning">Kembali</a>
+        </div>
     </div>
 
 @stop

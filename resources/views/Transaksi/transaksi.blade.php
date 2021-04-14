@@ -11,7 +11,7 @@
                   <div class="card-body">
                       <div class="row">
                           <div class="col-md-6">
-                              <img src="{{ url('uploads') }}/{{ $barang->foto }}" class="rounded mx-auto d-block" width="100%" alt="">
+                              <img src="{{ url('uploads') }}/{{ $barang->foto }}" class="rounded mx-auto d-block" width="80%" alt="">
                           </div>
                           <div class="col-md-6 mt-5">
                               <h2>{{ $barang->nama_barang}}</h2>
@@ -39,7 +39,7 @@
                                             <td>Jumlah Pesan</td>
                                             <td>:</td>
                                             <td>
-                                              <input class="form-control" type="text" name="qty" required="">
+                                              <input class="form-control" type="number" name="qty" required="">
                                             </td>
                                           </tr>
                                           <tr>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\User;
+use Session;
 
 class AdminController extends Controller
 {

@@ -7,6 +7,7 @@ use Validator;
 use App\Models\User;
 use App\Models\Merchant;
 use DB;
+use Session;
 
 class MerchantController extends Controller
 {
@@ -20,13 +21,18 @@ class MerchantController extends Controller
      */
     public function index()
     {
-        $data = DB::table('merchant')
+        $cek = Session::get('level');
+        if($cek == "admin"){
+            $data = DB::table('merchant')
                         ->select('merchant.id', 'merchant.nama_toko', 'merchant.alamat', 'merchant.id_user',
                                 'users.nama')
                         ->join('users', 'users.id', '=', 'merchant.id_user')
                         ->simplepaginate(4);
 
-        return view('Merchant.merchant', compact('data'));
+            return view('Merchant.merchant', compact('data'));
+        } else {
+            return abort(404);
+        }
     }
 
     /**
@@ -36,6 +42,7 @@ class MerchantController extends Controller
      */
     public function create()
     {
+        
         $data = User::where('level', '=', 'seller')->get();
         return view('Merchant.merchant_create', compact('data'));
     }
@@ -81,6 +88,7 @@ class MerchantController extends Controller
      */
     public function edit($id)
     {
+        
         $data = Merchant::where('id', $id)->get();
         return view('Merchant.merchant_update', compact('data'));
     }
@@ -116,14 +124,15 @@ class MerchantController extends Controller
      */
     public function destroy($id)
     {
-      $data = User::where('id', $id)->first();
+            $data = User::where('id', $id)->first();
 
-      if($data != null){
-          $data->delete();
+            if($data != null){
+                $data->delete();
 
-          return redirect('/merchant')->with('alert_message', 'Berhasil menghapus data!');
-      }
+                return redirect('/merchant')->with('alert_message', 'Berhasil menghapus data!');
+            }
 
-      return redirect('/merchant')->with('alert_message', 'ID tidak ditemukan!');
+                return redirect('/merchant')->with('alert_message', 'ID tidak ditemukan!');  
+        
     }
 }

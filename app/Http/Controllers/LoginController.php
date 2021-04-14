@@ -26,6 +26,7 @@ class LoginController extends Controller
             $data=$proses->first();
             Session::put('id', $data->id);
             Session::put('nama', $data->nama);
+            Session::put('telp', $data->telp);
             Session::put('email', $data->email);
             Session::put('level', $data->level);
             Session::put('login_status', true);//jika data itu benar maka akan menuju ke home

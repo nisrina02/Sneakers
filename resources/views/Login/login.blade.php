@@ -27,6 +27,11 @@
 		      		<span class="fa fa-user-o"></span>
 		      	</div>
 		      	<h3 class="text-center mb-4">Have an account?</h3>
+				  @if (session('alert_pesan'))
+        <div class="alert alert-success">
+            {{ session('alert_pesan') }}
+        </div>
+    @endif
 						<form action="{{url('login/cek')}}" class="login-form" method="post">
 						{{ csrf_field() }}
 		      		<div class="form-group">

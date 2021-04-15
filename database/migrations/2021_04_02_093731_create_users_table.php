@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->String('nama', 50);
             $table->String('telp', 14);
-            $table->String('email', 30)->unique();
+            $table->String('email', 100)->unique();
             $table->String('password');
             $table->enum('level', ['admin', 'seller', 'customer']);
             $table->timestamps();

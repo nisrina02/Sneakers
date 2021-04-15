@@ -25,6 +25,14 @@ class User extends Authenticatable
         'level',
     ];
 
+    public function transaksi(){
+        return $this->hasMany('App\Models\Transaksi', 'id_user', 'id');
+    }
+
+    public function merchant(){
+        return $this->hasMany('App\Models\Merchant', 'id_user', 'id');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

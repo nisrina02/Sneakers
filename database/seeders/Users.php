@@ -27,6 +27,20 @@ class Users extends Seeder
               'email' => 'seungm00@gmail.com',
               'password' => md5('123456789'),
               'level' => 'admin'
+          ],
+          [
+            'nama' => 'Bang Christoper Chan',
+            'telp' => '0823561893562',
+            'email' => 'CB97@gmail.com',
+            'password' => md5('123456789'),
+            'level' => 'seller'
+          ],
+          [
+            'nama' => 'Hwang Hyunjin',
+            'telp' => '0872936541740',
+            'email' => 'Llama00@gmail.com',
+            'password' => md5('123456789'),
+            'level' => 'customer'
           ]
       ]);
     }

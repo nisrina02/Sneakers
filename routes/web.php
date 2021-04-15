@@ -79,6 +79,6 @@ Route::get('transaksi/{id}', [TransaksiController::class, 'index']);
 Route::get('transaksi', [TransaksiController::class, 'tampil_semua_transaksi']);
 Route::post('transaksi_add/{id}', [TransaksiController::class, 'transaksi']);
 Route::get('checkout', [TransaksiController::class, 'checkout']);
-Route::get('konformasi',[TransaksiController::class, 'konfirmasi']);
+Route::get('konfirmasi_checkout',[TransaksiController::class, 'konfirmasi']);
 Route::delete('delete_checkout/{id}', [TransaksiController::class, 'delete_checkout']);
 

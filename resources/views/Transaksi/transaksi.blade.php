@@ -2,8 +2,13 @@
 @section('content')
 
   <div class="container mt-2">
+  @if (session('Alert_message'))
+          <div class="alert alert-success">
+              {{ session('Alert_message') }}
+          </div>
+          @endif
       <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12 mb-4">
               <a href="{{ url('barang')}}" class="btn btn-warning"><i class="fa fa-arrow-left"></i>Kembali</a>
           </div>
           <div class="col-md-12 mt-3">
@@ -25,7 +30,7 @@
                                       <tr>
                                         <td>Stok</td>
                                         <td>:</td>
-                                        <td>{{ number_format($barang->stok) }}</td>
+                                        <td>{{ $barang->stok }}</td>
                                       </tr>
                                       <tr>
                                         <td>Deskripsi</td>

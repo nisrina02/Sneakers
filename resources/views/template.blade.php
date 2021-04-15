@@ -94,9 +94,19 @@
   <div class="col-lg-4 col-sm-6 col-12">
     <div class="widgets-wrap float-md-right">
       <div class="widget-header  mr-3">
-      
-        <a href="{{ url('checkout') }}"><img src="{{asset('shop')}}//images/tes.jpg" class="icon icon-sm rounded-circle border">
-        <i class="fa fa-shopping-cart"></i><span class="badge badge-danger"></span></a>
+        <?php
+          $trans = \App\Models\Transaksi::where('id_user', Session::get('id'))->where('status', 0)->first();
+          if(!empty($trans)){
+            $notif = \App\Models\DetailTransaksi::where('id_transaksi', $trans->id)->count();
+          }
+        ?>
+        <a href="{{ url('checkout') }}">
+            <img src="{{asset('shop')}}//images/tes.jpg" class="icon icon-sm rounded-circle border">
+            <i class="fa fa-shopping-cart"></i>
+            @if(!empty($notif))
+            <span class="badge badge-danger">{{ $notif }}</span>
+            @endif    
+        </a>
       </div>
       <div class="widget-header icontext">
         <div class="text">

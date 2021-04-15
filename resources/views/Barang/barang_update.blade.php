@@ -30,7 +30,7 @@
 				</div>
 				<div class="mb-3">
 				<label for="validationDefault03" class="form-label">Foto Barang</label>
-					<input type="file" class="form-control" aria-label="file example" name="foto" value="{{$dt->foto}}" required>
+					<input type="file" class="form-control" aria-label="file example" name="foto" value="/Uploads/{{$dt->foto}}" required>
   				</div>
 				<div class="col-md-3">
 					<label for="validationDefault03" class="form-label">Stok</label>
@@ -38,11 +38,11 @@
 				</div>
         <div class="col-md-3">
           <label for="validationDefault03" class="form-label">ID Merchant</label>
-          <input type="text" class="form-control" id="validationDefault03" name="id_merchant" placeholder="ID Merchant" value="{{$dt->id_merchant}}" required>
+          <input type="text" class="form-control" id="validationDefault03" name="id_merchant" placeholder="ID Merchant" value="{{$dt->id_merchant}}" read-only>
         </div>
           <div class="col-md-6">
       				<label for="validationTextarea" class="form-label">Deskripsi Barang</label>
-      				<textarea class="form-control" id="validationTextarea" name="deskripsi" placeholder="Deskripsi Barang" value="{{$dt->deskripsi}}" required></textarea>
+      				<textarea class="form-control" id="validationTextarea" name="deskripsi" placeholder="Deskripsi Barang" value="" required>{{$dt->deskripsi}}</textarea>
       			</div>
 				<div class="col-12 mt-2">
 					<button class="btn btn-primary" type="submit">Simpan</button>

@@ -21,7 +21,11 @@ class Barang extends Model
     protected $table = "barang";
     protected $primaryKey = "id"; 
 
-    public function barang(){
-        return $this->belongsTo('App\Models\Merchant', 'id', 'id_merchant');
+    public function detail_transaksi(){
+        return $this->hasMany('App\Models\DetailTransaksi', 'id_barang', 'id');
+    }
+
+    public function merchant(){
+        return $this->belongsTo('App\Models\Merchant', 'id_merchant', 'id');
     }
 }

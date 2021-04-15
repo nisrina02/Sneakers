@@ -19,7 +19,11 @@ class Merchant extends Model
     protected $table = "merchant";
     protected $primaryKey = 'id';
 
-    public function merchant(){
-        return $this->belongsTo('App\Models\User', 'id', 'id_user');
+    public function user(){
+        return $this->belongsTo('App\Models\User', 'id_user', 'id');
+    }
+
+    public function barang(){
+        return $this->hasMany('App\Models\Barang', 'id_merchant', 'id');
     }
 }

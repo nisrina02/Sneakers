@@ -17,6 +17,7 @@ class CreateTransaksiTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_user');
             $table->date('tgl_transaksi');
+            $table->string('status');
             $table->unsignedBigInteger('total');
             $table->timestamps();
 

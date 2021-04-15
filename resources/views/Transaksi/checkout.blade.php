@@ -8,12 +8,11 @@
           </div>
           <div class="col-md-12">
                 <div class="card">
-                @if(!empty($transaksi))
                     <div class="card-header">
                         <h3><i class="fa fa-shopping-cart"></i>Checkout</h3>
+                        @if(!empty($transaksi))
                         <p>Tanggal Transaksi : {{ $transaksi->tgl_transaksi }}</p>
                     </div>
-                    
                     <div class="card-body">
                         <table class="table table-bordered" width="100%" >
                             <thead>
@@ -27,13 +26,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php $no = 1; ?>
-                            @foreach($detail as $dtl)
+                                <?php $no = 1; ?>
+                                @foreach($detail as $dtl)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $dtl->nama_barang }}</td>
+                                    <td>{{ $dtl->barang->nama_barang }}</td>
                                     <td>{{ $dtl->qty }}</td>
-                                    <td>Rp. {{ number_format($dtl->harga) }}</td>
+                                    <td>Rp. {{ number_format($dtl->barang->harga) }}</td>
                                     <td>Rp. {{ number_format($dtl->subtotal) }}</td>
                                     <td>
                                         <form action="{{ url('delete_checkout', $dtl->id) }}" method="post">
@@ -48,16 +47,13 @@
                                     <td align="right" colspan="4"><strong>Total Harga :</strong></td>
                                     <td><strong>Rp. {{ number_format($transaksi->total) }}</strong></td>
                                     <td>
-                                        <a href="{{ url('konformasi') }}" class="btn btn-success">Checkout</a>
+                                        <a href="{{ url('konfirmasi_checkout') }}" class="btn btn-success" onclick="return confirm('Yakin ingin checkout pesanan anda?')">Checkout</a>
                                     </td>
                                 </tr>
-                                    
-                                
-                            
                             </tbody>
                         </table>
+                        @endif
                     </div>
-                    @endif
                 </div>
           </div>
       </div>

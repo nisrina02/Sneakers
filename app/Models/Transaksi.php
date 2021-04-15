@@ -18,7 +18,11 @@ class Transaksi extends Model
     protected $table = "transaksi";
     protected $primaryKey = "id";
 
-    public function transaksi(){
-        return $this->belongsTo('App\Models\User', 'id', 'id_user');
+    public function user(){
+        return $this->belongsTo('App\Models\User', 'id_user', 'id');
+    }
+
+    public function detail_transaksi(){
+        return $this->hasMany('App\Models\DetailTransaksi', 'id_transaksi', 'id');
     }
 }

@@ -67,7 +67,7 @@ class UserController extends Controller
         $user->level = 'customer';
         $user->save();
 
-        return redirect('/log in')->with('alert_pesan', 'Data anda telah disimpan');
+        return redirect('/log in')->with('alert_pesan', 'Register berhasil');
     }
 
     /**

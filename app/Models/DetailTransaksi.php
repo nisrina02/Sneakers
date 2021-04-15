@@ -19,11 +19,11 @@ class DetailTransaksi extends Model
     protected $table = "detail_transaksi";
     protected $primaryKey = "id";
 
-    public function item(){
-        return $this->belongsTo('App\Models\Barang', 'id', 'id_barang');
+    public function transaksi(){
+        return $this->belongsTo('App\Models\Transaksi', 'id_transaksi', 'id');
     }
 
-    public function transaksi(){
-        return $this->belongsTo('App\Models\Transaksi', 'id', 'id_transaksi');
+    public function barang(){
+        return $this->belongsTo('App\Models\Barang', 'id_barang', 'id');
     }
 }

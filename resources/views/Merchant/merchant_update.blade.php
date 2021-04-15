@@ -24,7 +24,7 @@
 				</div>
 				<div class="col-md-6">
 					<label for="validationDefault03" class="form-label">ID Seller</label>
-					<input type="text" class="form-control" id="validationDefault03" name="id_user" placeholder="ID Seller" value="{{ $dt->id_user }}" required>
+					<input type="text" class="form-control" id="validationDefault03" name="id_user" placeholder="ID Seller" value="{{ $dt->id_user }}" read-only>
 				</div>
 				<div class="col-12 mt-2">
 					<button class="btn btn-primary" type="submit">Simpan</button>

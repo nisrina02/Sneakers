@@ -9,7 +9,7 @@
           <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3><i class="fa fa-shopping-cart"></i>Checkout</h3>
+                        <h3><i class="fa fa-shopping-cart"></i> Keranjang</h3>
                         @if(!empty($transaksi))
                         <p>Tanggal Transaksi : {{ $transaksi->tgl_transaksi }}</p>
                     </div>
@@ -38,7 +38,7 @@
                                         <form action="{{ url('delete_checkout', $dtl->id) }}" method="post">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data?')">Delete</button>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data?')"><i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -47,7 +47,7 @@
                                     <td align="right" colspan="4"><strong>Total Harga :</strong></td>
                                     <td><strong>Rp. {{ number_format($transaksi->total) }}</strong></td>
                                     <td>
-                                        <a href="{{ url('konfirmasi_checkout') }}" class="btn btn-success" onclick="return confirm('Yakin ingin checkout pesanan anda?')">Checkout</a>
+                                        <a href="{{ url('konfirmasi_checkout') }}" class="btn btn-success" onclick="return confirm('Yakin ingin checkout pesanan anda?')"><i class="fa fa-shopping-cart"></i> Checkout</a>
                                     </td>
                                 </tr>
                             </tbody>

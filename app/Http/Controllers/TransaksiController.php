@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\Transaksi;
 use App\Models\DetailTransaksi;
+use App\Models\User;
 use Session;
 use Carbon\Carbon;
 use Alert;
@@ -46,6 +47,7 @@ class TransaksiController extends Controller
             $transaksi->tgl_transaksi = $tgl;
             $transaksi->status = 0;
             $transaksi->total = 0;
+            $transaksi->kode = mt_rand(100, 999);
             $transaksi->save();
         }
         
@@ -94,6 +96,19 @@ class TransaksiController extends Controller
 
     public function konfirmasi()
     {
+        $user = User::where('id', Session::get('id'))->first();
+        if(empty($user->alamat))
+        {
+            Alert()->error('Harap melengkapi profil terlebih dahulu', 'Gagal');
+            return redirect('profil');
+        }
+
+        if(empty($user->telp))
+        {
+            Alert()->error('Harap melengkapi profil terlebih dahulu', 'Gagal');
+            return redirect('profil');
+        }
+
         $transaksi = Transaksi::where('id_user', Session::get('id'))->where('status', 0)->first();
         $id_transaksi = $transaksi->id;
         $transaksi->status = 1;

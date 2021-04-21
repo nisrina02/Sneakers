@@ -27,29 +27,36 @@
 		      		<span class="fa fa-user-o"></span>
 		      	</div>
 		      	<h3 class="text-center mb-4">Have an account?</h3>
-				  @if (session('alert_pesan'))
-        <div class="alert alert-success">
-            {{ session('alert_pesan') }}
-        </div>
-    @endif
-						<form action="{{url('login/cek')}}" class="login-form" method="post">
-						{{ csrf_field() }}
+				@if (session('alert_pesan'))
+        			<div class="alert alert-success">
+            		{{ session('alert_pesan') }}
+        		</div>
+    			@endif
+
+				@if (session('pesan'))
+        			<div class="alert alert-danger">
+            		{{ session('pesan') }}
+        		</div>
+    			@endif
+				
+				<form action="{{url('login/cek')}}" class="login-form" method="post">
+				{{ csrf_field() }}
 		      		<div class="form-group">
 		      			<input type="text" class="form-control rounded-left" name="email" placeholder="Email" required>
 		      		</div>
-	            <div class="form-group d-flex">
-	              <input type="password" class="form-control rounded-left" name="password" placeholder="Password" required>
-	            </div>
-	            <div class="form-group d-md-flex">
-	            	<div class="w-50">
+	            	<div class="form-group d-flex">
+	              		<input type="password" class="form-control rounded-left" name="password" placeholder="Password" required>
+	            	</div>
+	            	<div class="form-group d-md-flex">
+	            		<div class="w-50">
 	            		<label class="checkbox-wrap checkbox-primary">Remember Me
-									  <input type="checkbox" checked>
-									  <span class="checkmark"></span>
-									</label>
-								</div>
-								<div class="w-50 text-md-right">
-									<a href="{{url('form_register')}}">Register</a>
-								</div>
+							<input type="checkbox" checked>
+							<span class="checkmark"></span>
+						</label>
+					</div>
+					<div class="w-50 text-md-right">
+						<a href="{{url('form_register')}}">Register</a>
+					</div>
 	            </div>
 				<!-- <a href="" >Create an Account</a> -->
 	            <div class="form-group">

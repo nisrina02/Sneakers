@@ -79,8 +79,8 @@ class BarangController extends Controller
             'foto' => 'required|mimes:jpeg, jpg, png, svg',
             'jenis' => 'required',
             'deskripsi' => 'required',
-            'harga' => 'required',
-            'stok' => 'required',
+            'harga' => 'required|numeric',
+            'stok' => 'required|numeric',
         ]);
 
         // $imgName = $request->foto->getClientOriginalName().'-'.time()'.'.$request->foto->extension();
@@ -144,13 +144,13 @@ class BarangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
+        $this->validate($request, [
             'nama_barang' => 'required',
             'foto' => 'required|mimes:jpeg, jpg, png, svg',
             'jenis' => 'required',
             'deskripsi' => 'required',
-            'harga' => 'required',
-            'stok' => 'required',
+            'harga' => 'required|numeric',
+            'stok' => 'required|numeric',
         ]);
 
         // $imgName = $request->foto->getClientOriginalName().'-'.time()'.'.$request->foto->extension();

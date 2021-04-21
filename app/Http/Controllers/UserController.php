@@ -49,8 +49,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:50',
-            'telp' => 'required|string|min:10',
+            'nama' => 'required|string|max:100',
             'email' => 'required|string|max:100|unique:Users',
             'password' => 'required|string|min:6',
         ]);
@@ -61,7 +60,6 @@ class UserController extends Controller
 
         $user = new User();
         $user->nama = $request->nama;
-        $user->telp = $request->telp;
         $user->email = $request->email;
         $user->password = md5($request->password);
         $user->level = 'customer';
@@ -106,7 +104,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:50',
+            'nama' => 'required|string|max:100',
             'telp' => 'required|string|min:10',
         ]);
 

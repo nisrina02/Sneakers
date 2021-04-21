@@ -32,7 +32,7 @@ class LoginController extends Controller
             Session::put('login_status', true);//jika data itu benar maka akan menuju ke home
             return redirect('/home');
         } else {
-            Session::flash('pesan', 'Email dan Password salah');
+            Session::flash('pesan', 'Email atau Password salah');
             return redirect('log in');
         }
     }

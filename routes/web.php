@@ -10,6 +10,8 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MerchantController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\HistoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +39,12 @@ Route::get('home', [DashboardController::class,'index']);
 //Register
 Route::get('form_register', [RegisterController::class,'index']);
 Route::post('register_create', [UserController::class,'store']);
-Route::get('profil/{id}', [UserController::class, 'show']);
+Route::get('profil', [ProfilController::class, 'index']);
+Route::post('profil_edit', [ProfilController::class, 'update']);
+
+//History
+Route::get('histori', [HistoriController::class, 'index']);
+Route::get('histori/{id}', [HistoriController::class, 'detail']);
 
 //CRUD Seller
 Route::get('seller', [SellerController::class, 'index']);

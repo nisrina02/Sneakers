@@ -49,12 +49,12 @@ class SellerController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nama' => 'required',
-            'telp' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-          ]);
+        $request->validate([
+            'nama' => 'required|max:100',
+            'telp' => 'required|numeric|min:10',
+            'email' => 'required|unique:users',
+            'password' => 'required|min:6',
+        ]);
 
           $data = new User();
           $data->nama = $request->nama;
@@ -100,8 +100,8 @@ class SellerController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama' => 'required',
-            'telp' => 'required',
+            'nama' => 'required|max:100',
+            'telp' => 'required|numeric|min:10',
         ]);
 
         $data = User::where('id', $id)->first();

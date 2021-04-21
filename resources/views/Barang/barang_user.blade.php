@@ -40,7 +40,7 @@
         </table>
         <!-- <a href="{{url('barang_create')}}" class="btn btn-sm btn-success">Tambah data barang</a> -->
         <div class="col-md-12">
-        <a href="{{url('barang')}}" class="btn btn-sm btn-warning">Kembali</a>
+        <a href="{{url('barang')}}" class="btn btn-warning">Kembali</a>
         </div>
     </div>
 

@@ -41,16 +41,16 @@
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
                     <!-- <a href="{{ url('transaksi', $dt->id) }}" class="btn btn-sm btn-warning">Tambah ke Cart</a> -->
-                    <a href="{{ url('barang_edit', $dt->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data?')">Delete</button>
+                    <a href="{{ url('barang_edit', $dt->id) }}" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a>
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus data?')"><i class="fa fa-trash-alt"></button>
                   </form>
                 </td>
               </tr>
               @endforeach
             </tbody>
         </table>
-        <a href="{{url('barang_create')}}" class="btn btn-sm btn-success">Tambah data barang</a>
-        <a href="{{url('barang')}}" class="btn btn-sm btn-warning">Kembali</a>
+        <a href="{{url('barang_create')}}" class="btn btn-success">Tambah data barang</a>
+        <a href="{{url('barang')}}" class="btn btn-warning">Kembali</a>
     </div>
 
 @stop

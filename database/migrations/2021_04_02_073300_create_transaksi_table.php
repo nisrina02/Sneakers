@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMerchantTable extends Migration
+class CreateTransaksiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateMerchantTable extends Migration
      */
     public function up()
     {
-        Schema::create('merchant', function (Blueprint $table) {
+        Schema::create('transaksi', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->String('nama_toko');
-            $table->String('alamat');
             $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('kode');
+            $table->date('tgl_transaksi');
+            $table->string('status');
+            $table->unsignedBigInteger('total');
             $table->timestamps();
 
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
@@ -31,6 +33,6 @@ class CreateMerchantTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('merchant');
+        Schema::dropIfExists('transaksi');
     }
 }

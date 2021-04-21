@@ -58,7 +58,10 @@ class MerchantController extends Controller
         $this->validate($request, [
             'nama_toko' => 'required',
             'alamat' => 'required',
-          ]);
+            'id_user' => 'required',
+        ], [
+            'id_user.required' => 'The seller field is required'
+        ]);
 
           $data = new Merchant();
           $data->nama_toko = $request->nama_toko;

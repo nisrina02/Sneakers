@@ -4,7 +4,7 @@
   <div class="container mt-2">
       <div class="row">
           <div class="col-md-12">
-              <a href="{{ url('barang')}}" class="btn btn-warning"><i class="fa fa-arrow-left"></i>Kembali</a>
+              <a href="{{ url('barang')}}" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Kembali</a>
           </div>
           <div class="col-md-12 mt-3">
           @foreach($data as $data)

@@ -14,6 +14,7 @@
        <link rel="stylesheet" href="{{asset('shop')}}/css/ui.css">
        <link rel="stylesheet" href="{{asset('shop')}}/css/responsive.css">
 
+
         <link href="{{asset('shop')}}/css/all.min.cs">
         <script src="{{asset('shop')}}/js/jquery.min.js" type="text/javascript"></script>
         <script src="{{asset('shop')}}/js/bootstrap.bundle.min.js" type="text/javascript"></script>
@@ -101,24 +102,24 @@
           }
         ?>
         <a href="{{ url('checkout') }}">
-            <img src="{{asset('shop')}}//images/tes.jpg" class="icon icon-sm rounded-circle border">
-            <i class="fa fa-shopping-cart"></i>
+            <i class="fa fa-shopping-cart fa-2x"></i>
             @if(!empty($notif))
-            <span class="badge badge-danger">{{ $notif }}</span>
+            <span class="fa-layers-counter fa-3x" style="background:Tomato">{{ $notif }}</span>
             @endif    
         </a>
       </div>
       <div class="widget-header icontext">
         <div class="text">
-       
-        <a href="{{ url('profil') }}/{{ Session::get('id') }}">
-          <span class="text-muted">welcome, {{ Session::get('nama') }}</span>
+        <div class="nav-link dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown"  aria-expanded="false">
+            {{ Session::get('nama') }}
           </a>
-     
-          <div>
-            <a href="{{ url('log out') }}">Logout</a>
-            <!-- <a href="{{ url('/register')}}"> Register</a> -->
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ url('profil') }}">Profile</a>
+            <a class="dropdown-item" href="{{ url('histori') }}">Riwayat pemesanan</a>
+            <a class="dropdown-item" href="{{ url('log out') }}">Logout</a>
           </div>
+        </div>
         </div>
       </div>
     </div> <!-- widgets-wrap.// -->
@@ -199,6 +200,7 @@
 </div><!-- container // -->
 </section>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" type="text/javascript"></script>
 @include('sweet::alert')
     </body>
 </html>

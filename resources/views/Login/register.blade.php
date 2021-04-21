@@ -30,17 +30,29 @@
 						<form action="{{url('/register_create')}}" class="login-form" method="post">
 						{{ csrf_field() }}
                         <div class="form-group">
-		      			    <input type="text" class="form-control rounded-left" name="nama" placeholder="Nama Lengkap" required>
-		      		    </div>
-                        <div class="form-group">
-		      			    <input type="text" class="form-control rounded-left" name="telp" placeholder="Nomor Telepon" required>
-		      		    </div>
+		      			    <input type="text" class="form-control rounded-left @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" placeholder="Nama Lengkap">
+		      		    	@error('nama')
+							<div class="invalid-feedback">
+								{{$message}}
+							</div>
+							@enderror
+						</div>
 		      		    <div class="form-group">
-		      			    <input type="text" class="form-control rounded-left" name="email" placeholder="Email" required>
-		      		    </div>
+		      			    <input type="text" class="form-control rounded-left @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email">
+		      		    	@error('email')
+							<div class="invalid-feedback">
+								{{$message}}
+							</div>
+							@enderror
+						</div>
 	                    <div class="form-group d-flex">
-	                        <input type="password" class="form-control rounded-left" name="password" placeholder="Password" required>
-	                    </div>
+	                        <input type="password" class="form-control rounded-left @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" placeholder="Password">
+	                    	@error('password')
+							<div class="invalid-feedback">
+								{{$message}}
+							</div>
+							@enderror
+						</div>
 						<!-- <div class="form-group d-flex">
 	                        <input type="text" class="form-control rounded-left" name="level" placeholder="Level" required>
 	                    </div> -->
